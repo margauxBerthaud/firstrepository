@@ -41,6 +41,10 @@ public class Licence {
         return niveau;
     }
 
+    public void setClub(){
+        this.club=club;
+    }
+    
     public Club getClub() {
         return club;
     }
@@ -51,8 +55,11 @@ public class Licence {
      * @return vrai si valide à la date d
      **/
     public boolean estValide(Calendar d) {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+         
+        d.add(Calendar.YEAR, -1);
+        if(this.getDelivrance().before(d)){
+            return false;
+        } else return false;
     }
 
 }

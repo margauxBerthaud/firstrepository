@@ -8,7 +8,6 @@ import java.util.Set;
 
 public class Club {
 
- 
     public Moniteur president;
 
     public String nom;
@@ -16,6 +15,10 @@ public class Club {
     public String adresse;
 
     public String telephone;
+    
+    private HashSet<Plongee> plongeesNonConformes = new HashSet<>();
+    
+    private HashSet<Plongee> plongeesConformes = new HashSet<>();
 
     public Club(Moniteur président, String nom, String telephone) {
         this.president = président;
@@ -24,16 +27,17 @@ public class Club {
     }
 
     public Set<Plongee> plongeesNonConformes() {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        return plongeesNonConformes;
     }
 
     public void organisePlongee(Plongee p) {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        if (p.estConforme()) {
+            plongeesConformes.add(p);
+        } else {
+            plongeesNonConformes.add(p);
+        }
     }
-    
-    
+
     public Moniteur getPresident() {
         return president;
     }
